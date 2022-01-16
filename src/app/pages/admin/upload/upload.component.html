@@ -1,0 +1,36 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Sample Card</h5><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Upload File</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control" (click)="fileInput.value = null" (change)="seleccionarArchivo($event)"
+                                    [ngClass]="{ 'is-invalid': submitted && formUpload.get('file').invalid }" #fileInput>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success" (click)="loadFile()">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- (change)="seleccionarArchivo($event.target.files)" -->
+                    <!-- <input type="file" class="custom-file-input" id="customFile" lang="es"
+                        (click)="fileInput.value = null" (change)="seleccionarArchivo(null)"
+                        [ngClass]="{ 'is-invalid': submitted && formUpload.get('file').invalid }" #fileInput>
+                    <label class="custom-file-label" for="customFile">
+                        {{formUpload.get('file').value?formUpload.get('file').value:'Buscar Archivo'}}
+                    </label> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

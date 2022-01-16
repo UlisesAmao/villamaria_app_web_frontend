@@ -1,0 +1,56 @@
+<!-- <form [formGroup]="formUser">
+    <div>
+        <h2>Login</h2>
+    </div>
+    <div>
+        <label for="username">Usuario: </label>
+        <input type="text" id="username" formControlName="username">
+    </div>
+    <div>
+        <label for="password">Contraseña: </label>
+        <input type="password" id="password" formControlName="password">
+    </div>
+    <button type="button" (click)="auth()">Ingresar</button>
+</form> -->
+
+<div class="page-wrapper">
+	<div class="auth-bg">
+		<div class="authentication-box">
+			<div class="text-center"><img src="assets/images/endless-logo.png" alt=""></div>
+			<div class="card mt-4">
+				<div class="card-body">
+					<div class="text-center">
+						<h4>LOGIN</h4>
+						<h6>Ingresa tu usuario y contraseña </h6>
+					</div>
+					<form class="theme-form" [formGroup]="formUser">
+						<div class="form-group">
+							<label class="col-form-label pt-0">Usuario</label>
+							<input class="form-control" formControlName="username" type="text" required="">
+							<div *ngIf="formUser.controls.username.touched && formUser.controls.username.errors?.required"
+								class="text text-danger mt-1">
+								Usuario is required
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Contraseña</label>
+							<input class="form-control" type="password" formControlName="password" required="">
+							<div *ngIf="formUser.controls.password.touched && formUser.controls.password.errors?.required"
+								class="text text-danger mt-1">
+								Contraseña is required
+							</div>
+						</div>
+						<!-- [class.loader--text]="authService.showLoader" [disabled]="!formUser.valid ||
+						authService.showLoader" -->
+						<div class="form-group form-row mt-3 mb-0">
+							<button class="btn btn-primary btn-block btn-lg" (click)="auth()"
+								type="submit"><span>Login</span>
+								<!-- {{ authService.showLoader ? '' : 'Login' }} -->
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
