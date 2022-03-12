@@ -1,0 +1,21 @@
+<div class="btn-toolbar justify-content-end m-t-10" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button *ngIf="numeroPaginas>10" type="button" [disabled]="paginaActual==1"
+            [ngClass]="{'disabled': paginaActual==1,'btn-outline-success':paginaActual>1}" class="btn"
+            (click)="buscador(1)">Primera</button>
+        <button type="button" [disabled]="paginaActual==1"
+            [ngClass]="{'disabled': paginaActual==1,'btn-outline-success':paginaActual>1}" class="btn"
+            (click)="buscador(paginaActual-1)">&laquo;</button>
+        <ng-container *ngFor="let pagina of paginas">
+            <button type="button" [disabled]="paginaActual==pagina"
+                [ngClass]="{'disabled': paginaActual==pagina,'btn-outline-success':paginaActual!=pagina}"
+                class="btn btn-outline-success" (click)="buscador(pagina)">{{pagina}}</button>
+        </ng-container>
+        <button type="button" [disabled]="paginaActual==numeroPaginas"
+            [ngClass]="{'disabled': paginaActual==numeroPaginas,'btn-outline-success':paginaActual<numeroPaginas}"
+            class="btn" (click)="buscador(paginaActual+1)">&raquo;</button>
+        <button *ngIf="numeroPaginas>10" type="button" [disabled]="paginaActual==numeroPaginas"
+            [ngClass]="{'disabled': paginaActual==numeroPaginas,'btn-outline-success':paginaActual<numeroPaginas}"
+            class="btn" (click)="buscador(numeroPaginas)">Última</button>
+    </div>
+</div>

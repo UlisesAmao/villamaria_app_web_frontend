@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from 'src/app/models/auth/user';
 import { UserToken } from 'src/app/models/auth/user-token';
 
 @Injectable({
@@ -26,5 +27,18 @@ export class UserTokenSessionService {
 
   obtenerUsuarioId(): number {
     return JSON.parse(localStorage.getItem('token')).id;
+  }
+
+  obtenerNombreUsuario(): String {
+    const usuario: User = JSON.parse(localStorage.getItem('token')).userBD;
+    return usuario.nombres.split(' ')[0] + ' ' + usuario.ap_paterno;
+  }
+
+  obtenerImagenUsuario(): String {
+    return JSON.parse(localStorage.getItem('token')).userBD.foto;
+  }
+
+  obtenerPerfilUsuario(): String {
+    return JSON.parse(localStorage.getItem('token')).userBD.id_perfil;
   }
 }

@@ -3,6 +3,12 @@ import { ModuleWithProviders } from '@angular/core';
 import { AdminComponent } from '../admin/admin.component';
 import { UploadComponent } from '../admin/upload/upload.component';
 import { SampleComponent } from './sample/sample.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AutorizacionesComponent } from './autorizaciones/autorizaciones.component';
+import { RecojosComponent } from './recojos/recojos.component';
+import { ResponsableRecojoComponent } from './responsable-recojo/responsable-recojo.component';
+import { AuthGuardBackofficeService } from 'src/app/shared/services/security/auth-guard-backoffice.service copy';
+import { AuthGuardApafaService } from 'src/app/shared/services/security/auth-guard-apafa.service';
 
 export const routes: Routes = [
   {
@@ -11,7 +17,11 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'upload', pathMatch: 'full' },
       { path: 'upload', component: UploadComponent, data: { title: ':: Admin :: Upload ::' } },
-      { path: 'sample', component: SampleComponent, data: { title: ':: Admin :: Sample ::' } }
+      { path: 'sample', component: SampleComponent, data: { title: ':: Admin :: Sample ::' } },
+      { path: 'usuario', canActivate: [AuthGuardBackofficeService], component: UsuariosComponent, data: { title: ':: Admin :: Usuarios ::' } },
+      { path: 'autorizaciones', canActivate: [AuthGuardBackofficeService], component: AutorizacionesComponent, data: { title: ':: Admin :: Autorizaciones ::' } },
+      { path: 'recojos', canActivate: [AuthGuardBackofficeService], component: RecojosComponent, data: { title: ':: Admin :: Recojos ::' } },
+      { path: 'responsable-recojo', canActivate: [AuthGuardApafaService], component: ResponsableRecojoComponent, data: { title: ':: Admin :: Responsable Recojos ::' } }
     ]
   }
 ];

@@ -14,15 +14,19 @@ export class SidebarComponent {
   public menuItems: Menu[] = [];
   public url: any;
   public fileurl: any;
-  nombreUsuario: string;
+  nombreUsuario: String;
+  foto: String;
+  perfil: String;
 
   constructor(private _router: Router,
     public _navServices: NavService,
     private _userTokenSessionService: UserTokenSessionService) {
-      // this.nombreUsuario = _userTokenSessionService.obtenerUsuarioId(["nombres"]).nombres;
-    this.nombreUsuario = "Hola";
+    this.nombreUsuario = _userTokenSessionService.obtenerNombreUsuario();
+    this.foto = _userTokenSessionService.obtenerImagenUsuario();
+    // this.nombreUsuario = "Hola";
     this._navServices.items.subscribe(menuItems => {
-      this.menuItems = menuItems
+      this.perfil = _userTokenSessionService.obtenerPerfilUsuario();
+      this.menuItems = menuItems.filter(x => x.perfil == this.perfil);
       this._router.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
           menuItems.filter(items => {

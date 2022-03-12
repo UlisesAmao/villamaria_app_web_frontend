@@ -9,6 +9,10 @@ import { UploadComponent } from './upload/upload.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { routing } from './admin.routing';
 import { SampleComponent } from './sample/sample.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AutorizacionesComponent } from './autorizaciones/autorizaciones.component';
+import { RecojosComponent } from './recojos/recojos.component';
+import { ResponsableRecojoComponent } from './responsable-recojo/responsable-recojo.component';
 
 
 
@@ -16,7 +20,11 @@ import { SampleComponent } from './sample/sample.component';
   declarations: [
     AdminComponent,
     UploadComponent,
-    SampleComponent
+    SampleComponent,
+    UsuariosComponent,
+    AutorizacionesComponent,
+    RecojosComponent,
+    ResponsableRecojoComponent
   ],
   imports: [
     CommonModule,

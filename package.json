@@ -1,5 +1,5 @@
 {
-  "name": "villamaria-app-web-frontend",
+  "name": "pickmeapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,8 +20,10 @@
     "@angular/router": "~13.1.0",
     "bootstrap": "^4.3.1",
     "feather-icons": "^4.19.0",
+    "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "rxjs": "~7.4.0",
+    "sweetalert2": "^11.4.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

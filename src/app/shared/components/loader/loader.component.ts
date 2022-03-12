@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { LoaderService } from '../../services/common/loader.service';
 
 @Component({
   selector: 'app-loader',
@@ -7,15 +8,27 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
 
-  public show: boolean = true;
+  public show: boolean = false;
 
-  constructor() {
-    setTimeout(() => {
-      this.show = false;
-    }, 1500);
+  constructor(private _loaderService: LoaderService) {
+    // setTimeout(() => {
+    //   this.show = false;
+    // }, 1500);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this._loaderService.loaderState.subscribe(value => {
+      this.show = true;
+      this._loaderService.loaderState.subscribe(
+        value => {
+          this.show = value.show;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    });
+  }
 
   ngOnDestroy() { }
 

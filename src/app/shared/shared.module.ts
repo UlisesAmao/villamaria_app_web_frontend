@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { FeatherIconsComponent } from './components/feather-icons/feather-icons.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FeatherIconsComponent } from './components/feather-icons/feather-icons.
     SidebarComponent,
     HeaderComponent,
     FooterComponent,
-    FeatherIconsComponent
+    FeatherIconsComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { FeatherIconsComponent } from './components/feather-icons/feather-icons.
     SidebarComponent,
     HeaderComponent,
     FooterComponent,
-    FeatherIconsComponent
+    FeatherIconsComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

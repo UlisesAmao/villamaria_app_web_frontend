@@ -1,0 +1,78 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <!-- <div class="card-header">
+                    <h5>Sample Card</h5><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                </div> -->
+                <div class="card-body">
+                    <form class="search-form" [formGroup]="filterRecojos">
+                        <div class="row align-items-end">
+                            <div class="col-12 col-sm-5">
+                                <div class="form-group">
+                                    <label for="search">DNI Estudiante:</label>
+                                    <input type="text" id="search" class="form-control" placeholder="Buscar"
+                                        formControlName="search">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-7 text-right">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-secondary mr-2" (click)="getRecojos(0)">
+                                        <app-feather-icons [icon]="'search'"></app-feather-icons> Buscar
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" (click)="getFile()">
+                                        <app-feather-icons [icon]="'download'"></app-feather-icons> Descargar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Estudiante</th>
+                                    <th>DNI Estudiante</th>
+                                    <th>Grado</th>
+                                    <th>Autorizado a recojo</th>
+                                    <th>DNI</th>
+                                    <th>Fecha y hora del recojo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngIf="recojos && recojos.length>0">
+                                    <ng-container *ngFor="let recojo of recojos, let i = index">
+                                        <tr>
+                                            <td>{{recojo.aut_est.estudiante.nombres}}
+                                                {{recojo.aut_est.estudiante.ap_paterno}}
+                                                {{recojo.aut_est.estudiante.ap_materno}}</td>
+                                            <td>{{recojo.aut_est.estudiante.numero_documento}}</td>
+                                            <td>{{recojo.aut_est.estudiante.grado.nombre}}</td>
+                                            <td>{{recojo.aut_est.autorizacion.autorizado.nombres}}
+                                                {{recojo.aut_est.autorizacion.autorizado.ap_paterno}}
+                                                {{recojo.aut_est.autorizacion.autorizado.ap_materno}}</td>
+                                            <td>{{recojo.aut_est.autorizacion.autorizado.numero_documento}}</td>
+                                            <td>{{recojo.fecha_recojo | date:'dd-MM-yyyy hh:mm a'}}</td>
+                                        </tr>
+                                    </ng-container>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <div class="table-responsive">
+                                <app-pagination *ngIf="pagination && pagination.numeroPaginas>1"
+                                    [numeroPaginas]="pagination.numeroPaginas" [paginaActual]="pagination.page"
+                                    (onSubmit)="getRecojos($event)">
+                                </app-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

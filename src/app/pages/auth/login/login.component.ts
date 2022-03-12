@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserToken } from 'src/app/models/auth/user-token';
 import { Parameter } from 'src/app/models/common/parameter';
 import { AuthService } from 'src/app/shared/services/security/auth.service';
 import { UserTokenSessionService } from 'src/app/shared/services/security/user-token-session.service';
@@ -37,8 +38,13 @@ export class LoginComponent implements OnInit {
     this._auth.auth(parametro).subscribe(
       value => {
         console.log(value);
-        this._userTokenSessionService.setToken(JSON.stringify(value.data.data));
-        this._router.navigate(['/admin/upload']);
+        const userToken: UserToken = value.data;
+        this._userTokenSessionService.setToken(JSON.stringify(userToken));
+        if(userToken.userBD.id_perfil==1){
+          this._router.navigate(['/admin/usuario']);
+        }else{
+          this._router.navigate(['/admin/responsable-recojo']);
+        }
       }
     );
   }
