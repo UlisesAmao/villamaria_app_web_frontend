@@ -14,7 +14,6 @@ export class AuthGuardBackofficeService implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         const userToken: UserToken = this._userTokenSessionService.getToken();
-        console.log(userToken, "jjjjj");
         if (userToken.userBD.id_perfil == 1) {
             return true;
         }

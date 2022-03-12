@@ -50,7 +50,6 @@ export class UploadComponent implements OnInit {
   }
 
   loadFile() {
-    console.log("ss");
     const parametro: Parameter = new Parameter;
     parametro.url = '/padre';
     parametro.request = 'FILE_FORM_POST';

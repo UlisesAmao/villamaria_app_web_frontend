@@ -30,7 +30,6 @@ export class ResponsableRecojoComponent implements OnInit {
 
   getResponsableRecojo(page: number){
     this.filterResponsableRecojo.get('offset').setValue((page==0?page:page-1)*this.filterResponsableRecojo.get('limit').value);
-    console.log(this.filterResponsableRecojo.value);
     const parametro: Parameter = new Parameter;
     parametro.url = `/autorizados?limit=${this.filterResponsableRecojo.get('limit').value}&offset=${this.filterResponsableRecojo.get('offset').value}&search=${this.filterResponsableRecojo.get('search').value}`;
     parametro.request = 'GET';
@@ -55,10 +54,8 @@ export class ResponsableRecojoComponent implements OnInit {
       estado: user.activo
     }
     parametro.request = 'PUT';
-    console.log("DATA: ", parametro);
     this._responsableRecojosService.updateStatus(parametro).subscribe(
       value => {
-        console.log(value);
         this.getResponsableRecojo(1);
       }
     );

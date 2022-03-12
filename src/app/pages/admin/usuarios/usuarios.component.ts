@@ -30,7 +30,6 @@ export class UsuariosComponent implements OnInit {
 
   getUsers(page: number){
     this.filterUsuarios.get('offset').setValue((page==0?page:page-1)*this.filterUsuarios.get('limit').value);
-    console.log(this.filterUsuarios.value);
     const parametro: Parameter = new Parameter;
     parametro.url = `/usuarios?limit=${this.filterUsuarios.get('limit').value}&offset=${this.filterUsuarios.get('offset').value}&search=${this.filterUsuarios.get('search').value}`;
     parametro.request = 'GET';
@@ -55,10 +54,8 @@ export class UsuariosComponent implements OnInit {
       estado: user.activo
     }
     parametro.request = 'PUT';
-    console.log("DATA: ", parametro);
     this._usuarioService.updateStatus(parametro).subscribe(
       value => {
-        console.log(value);
         this.getUsers(1);
       }
     );

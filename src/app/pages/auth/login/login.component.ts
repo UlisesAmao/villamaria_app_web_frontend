@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
     parametro.useToken = false;
     this._auth.auth(parametro).subscribe(
       value => {
-        console.log(value);
         const userToken: UserToken = value.data;
         this._userTokenSessionService.setToken(JSON.stringify(userToken));
         if(userToken.userBD.id_perfil==1){
