@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
       value => {
         const userToken: UserToken = value.data;
         this._userTokenSessionService.setToken(JSON.stringify(userToken));
+        console.log("TOKEN SUCCESS");
+        console.log(JSON.stringify(value.data));
         if(userToken.userBD.id_perfil==1){
           this._router.navigate(['/admin/usuario']);
         }else{

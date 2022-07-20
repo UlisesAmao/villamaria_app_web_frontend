@@ -64,6 +64,9 @@ export class NavService {
 		},
 		{
 			path: '/admin/recojos', title: 'Recojos', icon: 'truck', type: 'link', perfil: '1'
+		},
+		{
+			path: '/admin/inasistencias', title: 'Inasistencias', icon: 'x-square', type: 'link', perfil: '1'
 		}
 	]
 	// Array

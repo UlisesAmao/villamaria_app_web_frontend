@@ -9,6 +9,7 @@ import { RecojosComponent } from './recojos/recojos.component';
 import { ResponsableRecojoComponent } from './responsable-recojo/responsable-recojo.component';
 import { AuthGuardBackofficeService } from 'src/app/shared/services/security/auth-guard-backoffice.service copy';
 import { AuthGuardApafaService } from 'src/app/shared/services/security/auth-guard-apafa.service';
+import { InasistenciasComponent } from './inasistencias/inasistencias.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
       { path: 'usuario', canActivate: [AuthGuardBackofficeService], component: UsuariosComponent, data: { title: ':: Admin :: Usuarios ::' } },
       { path: 'autorizaciones', canActivate: [AuthGuardBackofficeService], component: AutorizacionesComponent, data: { title: ':: Admin :: Autorizaciones ::' } },
       { path: 'recojos', canActivate: [AuthGuardBackofficeService], component: RecojosComponent, data: { title: ':: Admin :: Recojos ::' } },
+      { path: 'inasistencias', canActivate: [AuthGuardBackofficeService], component: InasistenciasComponent, data: { title: ':: Admin :: Inasistencias ::' } },
       { path: 'responsable-recojo', canActivate: [AuthGuardApafaService], component: ResponsableRecojoComponent, data: { title: ':: Admin :: Responsable Recojos ::' } }
     ]
   }

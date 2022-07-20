@@ -1,0 +1,79 @@
+<app-loader></app-loader>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Upload File</label>
+                                <div class="col-sm-9">
+                                    <input type="file" accept=".xlsx, .xls, .csv" class="form-control" (click)="fileInput.value = null" (change)="seleccionarArchivo($event)"
+                                    [ngClass]="{ 'is-invalid': submitted && formUpload.get('file').invalid }" #fileInput>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success" (click)="loadFile()">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="search-form" [formGroup]="filterInasistencias">
+                        <div class="row align-items-end">
+                            <div class="col-12 col-sm-5">
+                                <div class="form-group">
+                                    <label for="search">DNI Estudiante:</label>
+                                    <input type="text" id="search" class="form-control" placeholder="Buscar"
+                                        formControlName="search">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-7 text-right">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-secondary mr-2" (click)="getInasistencias(0)">
+                                        <app-feather-icons [icon]="'search'"></app-feather-icons> Buscar
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" (click)="uploadFileInasistence()">
+                                        <app-feather-icons [icon]="'upload'"></app-feather-icons> Cargar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Estudiante</th>
+                                    <th>DNI Estudiante</th>
+                                    <th>Fecha y hora</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngIf="inasistencias && inasistencias.length>0">
+                                    <ng-container *ngFor="let inasistencia of inasistencias, let i = index">
+                                        <tr>
+                                            <td>{{inasistencia.estudiante}}</td>
+                                            <td>{{inasistencia.dni}}</td>
+                                            <td>{{inasistencia.fechaHora | date:'dd-MM-yyyy hh:mm a'}}</td>
+                                        </tr>
+                                    </ng-container>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <div class="table-responsive">
+                                <app-pagination *ngIf="pagination && pagination.numeroPaginas>1"
+                                    [numeroPaginas]="pagination.numeroPaginas" [paginaActual]="pagination.page"
+                                    (onSubmit)="getInasistencias($event)">
+                                </app-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

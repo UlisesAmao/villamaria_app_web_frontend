@@ -13,6 +13,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AutorizacionesComponent } from './autorizaciones/autorizaciones.component';
 import { RecojosComponent } from './recojos/recojos.component';
 import { ResponsableRecojoComponent } from './responsable-recojo/responsable-recojo.component';
+import { InasistenciasComponent } from './inasistencias/inasistencias.component';
 
 
 
@@ -24,7 +25,8 @@ import { ResponsableRecojoComponent } from './responsable-recojo/responsable-rec
     UsuariosComponent,
     AutorizacionesComponent,
     RecojosComponent,
-    ResponsableRecojoComponent
+    ResponsableRecojoComponent,
+    InasistenciasComponent
   ],
   imports: [
     CommonModule,
